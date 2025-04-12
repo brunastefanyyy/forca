@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca</title>
+</head>
+<body>
+    <h1>
+        Bem vindo ao Jogo da Forca, {{session.jogador}}
+    </h1>
+    <h2>
+        Palavra: {{palavra_oculta}}
+    </h2>
+
+    <p>
+        Tentivas restantes: {{session.numero_tentativas}}
+    </p>
+    <p>
+        Letras erradas: {{session.letras_erradas | join(", ")}} 
+    </p>
+    <p>
+        Letras corretas: {{session.letras_corretas | join(", ")}} 
+    </p>
+    <p>
+        palavra_correta:{{session.palavra}}
+    </p>
+    
+<form action="/jogo" method="post">
+    <label>
+        letra:
+    </label>
+    <input type="text" name="letra">
+    </input>
+    <button>
+        enviar
+    </button>
+</form>
+
+</body>
+</html>
