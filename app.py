@@ -22,19 +22,22 @@ def comecar():
 @app.route("/jogo", methods = ["GET", "POST"])
 def jogo():
         palavra = session["palavra"]
+        letras_corretas = session["letras_corretas"]
         palavra_oculta = ""
 
         if request.method == "POST":
             letra = request.form["letra"].upper()
             
             if letra in palavra:
-                session["letras_corretas"].append(letra)
+                letras_corretas.append(letra)
        
         for letra in palavra: 
-            if letra in session["letras_corretas"]:
+            if letra in letras_corretas:
                palavra_oculta += letra 
             else: 
                 palavra_oculta += "_ "
+                
+        session["letras_corretas"] = letras_corretas
 
         return render_template ("jogo.html", palavra_oculta = palavra_oculta)
 
